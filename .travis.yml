@@ -1,0 +1,11 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t feel2x/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true feel2x/docker-react npm run test
